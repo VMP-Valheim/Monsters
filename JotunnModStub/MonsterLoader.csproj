@@ -85,6 +85,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Package\README.md" />
+    <EmbeddedResource Include="wizard" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Package\plugins\" />
