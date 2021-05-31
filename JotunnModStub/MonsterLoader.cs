@@ -10,6 +10,7 @@ using BepInEx.Configuration;
 using Jotunn.Utils;
 using Jotunn.Managers;
 using Jotunn.Entities;
+using System;
 
 namespace MonsterLoader
 {
@@ -22,13 +23,12 @@ namespace MonsterLoader
         public const string PluginName = "MonsterLoader";
         public const string PluginVersion = "0.0.1";
         private AssetBundle assetBundle;
-        private static GameObject fab;
 
         private void Awake()
         {
             loadassets();
-            loadenemy();
-        } 
+            ItemManager.OnVanillaItemsAvailable += loadenemy;
+        }
 
         private void loadassets()
         {
@@ -37,6 +37,7 @@ namespace MonsterLoader
 
         private void loadenemy()
         {
+            try { 
             var fab = assetBundle.LoadAsset<GameObject>("EarthTroll");
             PrefabManager.Instance.AddPrefab(fab);
 
@@ -71,6 +72,15 @@ namespace MonsterLoader
             var monsterAI = fab.GetComponent<MonsterAI>();
             monsterAI.m_alertedEffects = alertfx;
             monsterAI.m_idleSound = idlefx;
-            
+            }
+            catch (Exception ex)
+            {
+                Jotunn.Logger.LogError($"Error while adding cloned item: {ex.Message}");
+            }
+            finally
+            {
+                ItemManager.OnVanillaItemsAvailable -= loadenemy;
+            }
+        }
     }
 }
