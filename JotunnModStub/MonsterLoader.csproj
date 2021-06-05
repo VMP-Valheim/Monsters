@@ -86,6 +86,7 @@
     <EmbeddedResource Include="earthtroll" />
     <None Include="packages.config" />
     <None Include="Package\README.md" />
+    <EmbeddedResource Include="yetiboy" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Package\plugins\" />
