@@ -1,94 +1,87 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using BepInEx;
+using HarmonyLib;
 using System.Linq;
 using System.Reflection;
-using BepInEx;
-using HarmonyLib;
 using UnityEngine;
 
-[BepInPlugin("Monsterzz", "Monsterzz", "1.0.0")]
-[BepInProcess("valheim.exe")]
-public class Setup : BaseUnityPlugin
+namespace BeeBomber
 {
-	[HarmonyPatch(typeof(ZNetScene), "Awake")]
-	public static class ZNetScene_Awake_Patch
-	{
-		public static void Prefix(ZNetScene __instance)
-		{
-			if (!(__instance == null))
-			{
-				__instance.m_prefabs.AddRange(NewPrefabs);
-			}
-		}
-	}
 
-	[HarmonyPatch(typeof(ObjectDB), "CopyOtherDB")]
-	public static class ObjectDB_CopyOtherDB_Patch
-	{
-		public static void Postfix()
-		{
-			AddNewPrefabs();
-		}
-	}
+    [BepInPlugin(PluginId, "Monsterzz", "0.0.2")]
+    public class ThingLoader : BaseUnityPlugin
+    {
+        public const string PluginId = "Monsterzz";
+        private Harmony _harmony;
+        private static GameObject CrazyTroll;
+        private static GameObject EarthTroll;
+        private static GameObject Wizard;
+        private static GameObject Golem;
+        private static GameObject Yeti;
 
-	[HarmonyPatch(typeof(ObjectDB), "Awake")]
-	public static class ObjectDB_Awake_Patch
-	{
-		public static void Postfix()
-		{
-			AddNewPrefabs();
-		}
-	}
-
-	private readonly Harmony harmony = new Harmony("Monsterzz");
-
-	private static readonly List<GameObject> NewPrefabs = new List<GameObject>();
-
-	private void Awake()
-	{
-		AssetBundle assetBundleFromResources = GetAssetBundleFromResources("yetiboy");
-		List<string> list = new List<string>
-		{
-			"Assets/Yeti/YetiboyFenring.prefab",
-			"Assets/Yeti/Yeti_attack_claw.prefab",
-			"Assets/Yeti/Yeti_attack_jump.prefab",
-			"Assets/Yeti/Yeti_taunt.prefab"
-		};
-		foreach (string item in list)
-		{
-			NewPrefabs.Add(assetBundleFromResources.LoadAsset<GameObject>(item));
-		}
-		harmony.PatchAll();
-	}
-
-	private void OnDestroy()
-	{
-		harmony.UnpatchSelf();
-	}
-
-	public static AssetBundle GetAssetBundleFromResources(string fileName)
-	{
-		Assembly executingAssembly = Assembly.GetExecutingAssembly();
-		string text = executingAssembly.GetManifestResourceNames().Single((string str) => str.EndsWith(fileName));
-        Stream stream = executingAssembly.GetManifestResourceStream(text);
-		return AssetBundle.LoadFromStream(stream);
-	}
-
-	private static void AddNewPrefabs()
-	{
-		if (ObjectDB.instance == null || ObjectDB.instance.m_items.Count == 0 || ObjectDB.instance.GetItemPrefab("Amber") == null)
-		{
-			return;
-		}
-        foreach (GameObject newPrefab in NewPrefabs)
+        private void Awake()
         {
-            ItemDrop component = newPrefab.GetComponent<ItemDrop>();
-            if (component != null && ObjectDB.instance.GetItemPrefab(newPrefab.name.GetStableHashCode()) == null)
+            LoadAssets();
+            _harmony = Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), PluginId);
+        }
+        public static void TryRegisterFabs(ZNetScene zNetScene)
+        {
+            if (zNetScene == null || zNetScene.m_prefabs == null || zNetScene.m_prefabs.Count <= 0)
             {
-                ObjectDB.instance.m_items.Add(newPrefab);
-                Dictionary<int, GameObject> dictionary = (Dictionary<int, GameObject>)typeof(ObjectDB).GetField("m_itemByHash", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(ObjectDB.instance);
-                dictionary[newPrefab.name.GetStableHashCode()] = newPrefab;
+                return;
             }
+            zNetScene.m_prefabs.Add(CrazyTroll);
+            zNetScene.m_prefabs.Add(EarthTroll);
+        }
+        private static AssetBundle GetAssetBundleFromResources(string filename)
+        {
+            var execAssembly = Assembly.GetExecutingAssembly();
+            var resourceName = execAssembly.GetManifestResourceNames()
+                .Single(str => str.EndsWith(filename));
+
+            using (var stream = execAssembly.GetManifestResourceStream(resourceName))
+            {
+                return AssetBundle.LoadFromStream(stream);
+            }
+        }
+        private static void LoadAssets()
+        {
+            AssetBundle assetBundle = GetAssetBundleFromResources("earthtroll");
+            AssetBundle golem = GetAssetBundleFromResources("golem");
+            AssetBundle wizard = GetAssetBundleFromResources("wizard");
+            AssetBundle yetiboy = GetAssetBundleFromResources("yetiboy");
+            CrazyTroll = assetBundle.LoadAsset<GameObject>("CrazyTroll");
+            EarthTroll = assetBundle.LoadAsset<GameObject>("EarthTroll");
+            Wizard = wizard.LoadAsset<GameObject>("Wizard");
+            Golem = golem.LoadAsset<GameObject>("Golem2");
+            Yeti = yetiboy.LoadAsset<GameObject>("Yeti");
+
+            assetBundle?.Unload(false);
+
+        }
+
+        [HarmonyPatch(typeof(ZNetScene), "Awake")]
+        public static class ZNetScene_Awake_Patch
+        {
+            public static bool Prefix(ZNetScene __instance)
+            {
+                TryRegisterFabs(__instance);
+                Debug.Log("Loading the eggs");
+                return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(ObjectDB), "Awake")]
+        public static class ObjectDB_Awake_Patch
+        {
+            public static void Postfix()
+            {
+                Debug.Log("Growing some beasts.....");
+
+            }
+        }
+        private void OnDestroy()
+        {
+            _harmony?.UnpatchSelf();
         }
     }
 }

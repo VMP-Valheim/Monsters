@@ -84,9 +84,11 @@
   <ItemGroup>
     <None Include="app.config" />
     <EmbeddedResource Include="earthtroll" />
+    <EmbeddedResource Include="golem" />
     <None Include="packages.config" />
     <None Include="Package\README.md" />
     <EmbeddedResource Include="yetiboy" />
+    <EmbeddedResource Include="wizard" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Package\plugins\" />
