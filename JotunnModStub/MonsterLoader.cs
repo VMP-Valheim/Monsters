@@ -15,13 +15,7 @@ namespace MonsterLoader
         private Harmony _harmony;
         private static GameObject CrazyTroll;
         private static GameObject EarthTroll;
-        private static GameObject Wizard;
-        private static GameObject Golem;
-        private static GameObject Nasty;
         private AssetBundle assetBundle;
-        private AssetBundle golem;
-        private AssetBundle wizard;
-        private AssetBundle nasty;
 
         private void Awake()
         {
@@ -37,9 +31,6 @@ namespace MonsterLoader
             }
             zNetScene.m_prefabs.Add(CrazyTroll);
             zNetScene.m_prefabs.Add(EarthTroll);
-            zNetScene.m_prefabs.Add(Wizard);
-            zNetScene.m_prefabs.Add(Golem);
-            zNetScene.m_prefabs.Add(Nasty);
 
         }
         private static AssetBundle GetAssetBundleFromResources(string filename)
@@ -56,31 +47,9 @@ namespace MonsterLoader
         private void LoadAssets()
         {
             assetBundle = GetAssetBundleFromResources("earthtroll");
-            golem = GetAssetBundleFromResources("golem");
-            wizard = GetAssetBundleFromResources("wizard");
-            nasty = GetAssetBundleFromResources("nasty");
-
-            //testfish = GetAssetBundleFromResources("testfish");
             CrazyTroll = assetBundle.LoadAsset<GameObject>("CrazyTroll");
-            //var thing1 = CrazyTroll.AddComponent<CharacterDrop>();
-            //thing1.m_dropsEnabled = true;
             EarthTroll = assetBundle.LoadAsset<GameObject>("EarthTroll");
-            //var thing2 = EarthTroll.AddComponent<CharacterDrop>();
-            Debug.Log("Loading Wizard");
-            Wizard = wizard.LoadAsset<GameObject>("Wizard");
-            //var thing3 = Wizard.AddComponent<CharacterDrop>();
-            Debug.Log("Loading Golem");
-            Golem = golem.LoadAsset<GameObject>("Golem2");
-            //var thing4 = Golem.AddComponent<CharacterDrop>();
-            Debug.Log("Loading Nasty Crawler");
-            Nasty = nasty.LoadAsset<GameObject>("TheNasty");
-
-
-
             assetBundle?.Unload(false);
-            golem?.Unload(false);
-            wizard?.Unload(false);
-            nasty?.Unload(false);
 
         }
 
