@@ -89,12 +89,8 @@
     <EmbeddedResource Include="nasty" />
     <None Include="packages.config" />
     <None Include="Package\README.md" />
-    <EmbeddedResource Include="yetiboy" />
     <EmbeddedResource Include="wizard" />
-    <EmbeddedResource Include="werewolf" />
     <None Include="testfish" />
-    <EmbeddedResource Include="werebear" />
-    <EmbeddedResource Include="wendigo" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Package\plugins\" />

@@ -14,14 +14,8 @@ namespace MonsterLoader
         private static Dictionary<string, string> english = new Dictionary<string, string>() {
                                 {"earth_troll", "Evil Earth Troll"},
                                 {"crazy_troll", "Dark Goblin"},
-                                {"enemy_yeti","Yeti" },
                                 {"enemy_wizard","Evil Wizard" },
                                 {"enemy_nasty","Nasty Crawler" },
-                                {"enemy_wolf1","Armored WereWolf" },
-                                {"enemy_wolf2","Grey WereWolf" },
-                                {"enemy_wolf3","Black WereWolf" },
-                                {"enemy_wolf4","Brown WereWolf" },
-                                {"enemy_wolf5","Frost WereWolf" },
 };
 
         public static void init(string lang, Localization l)

@@ -8,7 +8,7 @@ using UnityEngine;
 namespace MonsterLoader
 {
 
-    [BepInPlugin(PluginId, "Monsterzz", "0.0.5")]
+    [BepInPlugin(PluginId, "Monsterzz", "0.0.7")]
     public class MonsterLoader : BaseUnityPlugin
     {
         public const string PluginId = "Monsterzz";
@@ -17,32 +17,11 @@ namespace MonsterLoader
         private static GameObject EarthTroll;
         private static GameObject Wizard;
         private static GameObject Golem;
-        private static GameObject Yeti;
         private static GameObject Nasty;
-        private static GameObject WereWolf1;
-        private static GameObject WereWolf2;
-        private static GameObject WereWolf3;
         private AssetBundle assetBundle;
         private AssetBundle golem;
         private AssetBundle wizard;
-        private AssetBundle yetiboy;
         private AssetBundle nasty;
-        private AssetBundle werewolf;
-        private AssetBundle werebear;
-        private AssetBundle wendigo;
-        //private AssetBundle testfish;
-
-        private static GameObject marlin;
-        private static GameObject yak;
-
-        public static Dictionary<string, string> t;
-        private static GameObject WereWolf4;
-        private static GameObject WereWolf5;
-        private static GameObject WereBear1;
-        private static GameObject WereBear2;
-        private static GameObject WereBear3;
-        private static GameObject Wendigo1;
-        private static GameObject Wendigo2;
 
         private void Awake()
         {
@@ -60,20 +39,7 @@ namespace MonsterLoader
             zNetScene.m_prefabs.Add(EarthTroll);
             zNetScene.m_prefabs.Add(Wizard);
             zNetScene.m_prefabs.Add(Golem);
-            zNetScene.m_prefabs.Add(Yeti);
             zNetScene.m_prefabs.Add(Nasty);
-            zNetScene.m_prefabs.Add(WereWolf1);
-            zNetScene.m_prefabs.Add(WereWolf2);
-            zNetScene.m_prefabs.Add(WereWolf3);
-            zNetScene.m_prefabs.Add(WereWolf4);
-            zNetScene.m_prefabs.Add(WereWolf5);
-            zNetScene.m_prefabs.Add(WereBear1);
-            zNetScene.m_prefabs.Add(WereBear2);
-            zNetScene.m_prefabs.Add(WereBear3);
-            zNetScene.m_prefabs.Add(Wendigo1);
-            zNetScene.m_prefabs.Add(Wendigo2);
-            //zNetScene.m_prefabs.Add(marlin);
-            //zNetScene.m_prefabs.Add(yak);
 
         }
         private static AssetBundle GetAssetBundleFromResources(string filename)
@@ -92,11 +58,7 @@ namespace MonsterLoader
             assetBundle = GetAssetBundleFromResources("earthtroll");
             golem = GetAssetBundleFromResources("golem");
             wizard = GetAssetBundleFromResources("wizard");
-            yetiboy = GetAssetBundleFromResources("yetiboy");
             nasty = GetAssetBundleFromResources("nasty");
-            werewolf = GetAssetBundleFromResources("werewolf");
-            werebear = GetAssetBundleFromResources("werebear");
-            wendigo = GetAssetBundleFromResources("wendigo");
 
             //testfish = GetAssetBundleFromResources("testfish");
             CrazyTroll = assetBundle.LoadAsset<GameObject>("CrazyTroll");
@@ -110,48 +72,16 @@ namespace MonsterLoader
             Debug.Log("Loading Golem");
             Golem = golem.LoadAsset<GameObject>("Golem2");
             //var thing4 = Golem.AddComponent<CharacterDrop>();
-            Debug.Log("Loading Yeti");
-            Yeti = yetiboy.LoadAsset<GameObject>("Yeti");
-            //var thing5 = Yeti.AddComponent<CharacterDrop>();
             Debug.Log("Loading Nasty Crawler");
             Nasty = nasty.LoadAsset<GameObject>("TheNasty");
-            Debug.Log("Loading Wolf1");
-            WereWolf1 = werewolf.LoadAsset<GameObject>("WereWolfBlackArmored");
-            Debug.Log("Loading Wolf2");
-            WereWolf2 = werewolf.LoadAsset<GameObject>("WereWolfDarkGrey");
-            Debug.Log("Loading Wolf3");
-            WereWolf3 = werewolf.LoadAsset<GameObject>("WereWolfBlack");
-            Debug.Log("Loading Wolf4");
-            WereWolf4 = werewolf.LoadAsset<GameObject>("WereWolfBrown");
-            Debug.Log("Loading Wolf5");
-            WereWolf5 = werewolf.LoadAsset<GameObject>("WereWolfWhite");
-            Debug.Log("Loading Bear1");
-            WereBear1 = werebear.LoadAsset<GameObject>("WereBearBlack");
-            Debug.Log("Loading Bear2");
-            WereBear2 = werebear.LoadAsset<GameObject>("WereBearGray");
-            Debug.Log("Loading Bear3");
-            WereBear3 = werebear.LoadAsset<GameObject>("WereBearRed");
-            Debug.Log("Loading Wendigo1");
-            Wendigo1 = wendigo.LoadAsset<GameObject>("WendigoForest");
-            Debug.Log("Loading Wendigo2");
-            Wendigo2 = wendigo.LoadAsset<GameObject>("WendigoSwamp");
 
 
-            //Debug.Log("Loading Marlin");
-            //marlin = testfish.LoadAsset<GameObject>("Marlin");
-            //Debug.Log("Loading Yak");
-            //yak = testfish.LoadAsset<GameObject>("Yak");
 
             assetBundle?.Unload(false);
             golem?.Unload(false);
             wizard?.Unload(false);
-            yetiboy?.Unload(false);
             nasty?.Unload(false);
-            werewolf?.Unload(false);
-            werebear?.Unload(false);
-            wendigo?.Unload(false);
 
-            //testfish?.Unload(false);
         }
 
         [HarmonyPatch(typeof(ZNetScene), "Awake")]
