@@ -29,6 +29,7 @@ namespace MonsterLoader
         private AssetBundle nasty;
         private AssetBundle werewolf;
         private AssetBundle werebear;
+        private AssetBundle wendigo;
         //private AssetBundle testfish;
 
         private static GameObject marlin;
@@ -40,6 +41,8 @@ namespace MonsterLoader
         private static GameObject WereBear1;
         private static GameObject WereBear2;
         private static GameObject WereBear3;
+        private static GameObject Wendigo1;
+        private static GameObject Wendigo2;
 
         private void Awake()
         {
@@ -67,6 +70,8 @@ namespace MonsterLoader
             zNetScene.m_prefabs.Add(WereBear1);
             zNetScene.m_prefabs.Add(WereBear2);
             zNetScene.m_prefabs.Add(WereBear3);
+            zNetScene.m_prefabs.Add(Wendigo1);
+            zNetScene.m_prefabs.Add(Wendigo2);
             //zNetScene.m_prefabs.Add(marlin);
             //zNetScene.m_prefabs.Add(yak);
 
@@ -91,6 +96,7 @@ namespace MonsterLoader
             nasty = GetAssetBundleFromResources("nasty");
             werewolf = GetAssetBundleFromResources("werewolf");
             werebear = GetAssetBundleFromResources("werebear");
+            wendigo = GetAssetBundleFromResources("wendigo");
 
             //testfish = GetAssetBundleFromResources("testfish");
             CrazyTroll = assetBundle.LoadAsset<GameObject>("CrazyTroll");
@@ -125,6 +131,11 @@ namespace MonsterLoader
             WereBear2 = werebear.LoadAsset<GameObject>("WereBearGray");
             Debug.Log("Loading Bear3");
             WereBear3 = werebear.LoadAsset<GameObject>("WereBearRed");
+            Debug.Log("Loading Wendigo1");
+            Wendigo1 = wendigo.LoadAsset<GameObject>("WendigoForest");
+            Debug.Log("Loading Wendigo2");
+            Wendigo2 = wendigo.LoadAsset<GameObject>("WendigoSwamp");
+
 
             //Debug.Log("Loading Marlin");
             //marlin = testfish.LoadAsset<GameObject>("Marlin");
@@ -138,6 +149,7 @@ namespace MonsterLoader
             nasty?.Unload(false);
             werewolf?.Unload(false);
             werebear?.Unload(false);
+            wendigo?.Unload(false);
 
             //testfish?.Unload(false);
         }

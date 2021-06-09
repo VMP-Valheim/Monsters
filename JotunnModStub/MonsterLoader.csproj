@@ -94,7 +94,7 @@
     <EmbeddedResource Include="werewolf" />
     <None Include="testfish" />
     <EmbeddedResource Include="werebear" />
-    <None Include="wendigo" />
+    <EmbeddedResource Include="wendigo" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Package\plugins\" />
