@@ -77,6 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\IgnoreAccessModifiers.cs" />
     <Compile Include="MonsterLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,10 +86,15 @@
     <None Include="app.config" />
     <EmbeddedResource Include="earthtroll" />
     <EmbeddedResource Include="golem" />
+    <EmbeddedResource Include="nasty" />
     <None Include="packages.config" />
     <None Include="Package\README.md" />
     <EmbeddedResource Include="yetiboy" />
     <EmbeddedResource Include="wizard" />
+    <EmbeddedResource Include="werewolf" />
+    <None Include="testfish" />
+    <EmbeddedResource Include="werebear" />
+    <None Include="wendigo" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Package\plugins\" />
