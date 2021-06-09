@@ -45,6 +45,7 @@ namespace EvilWizard
         private void LoadAssets()
         {
             wizard = GetAssetBundleFromResources("wizard");
+            Debug.Log("Loading Wizard");
             Wizard = wizard.LoadAsset<GameObject>("Wizard");
             wizard?.Unload(false);
 

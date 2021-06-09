@@ -49,7 +49,7 @@ namespace WhereWolves
             {
                 return AssetBundle.LoadFromStream(stream);
             }
-        }
+        } 
         private void LoadAssets()
         {
             werewolf = GetAssetBundleFromResources("werewolf");

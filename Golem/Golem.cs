@@ -46,7 +46,6 @@ namespace GolemLoader
             golem = GetAssetBundleFromResources("golem");
             Debug.Log("Loading Golem");
             Golem = golem.LoadAsset<GameObject>("Golem2");
-            //var thing4 = Golem.AddComponent<CharacterDrop>();
             golem?.Unload(false);
 
         }
