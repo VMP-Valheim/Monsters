@@ -37,7 +37,6 @@ namespace WhereWolves
             zNetScene.m_prefabs.Add(WereWolf3);
             zNetScene.m_prefabs.Add(WereWolf4);
             zNetScene.m_prefabs.Add(WereWolf5);
-
         }
         private static AssetBundle GetAssetBundleFromResources(string filename)
         {
@@ -49,7 +48,7 @@ namespace WhereWolves
             {
                 return AssetBundle.LoadFromStream(stream);
             }
-        } 
+        }
         private void LoadAssets()
         {
             werewolf = GetAssetBundleFromResources("werewolf");
@@ -63,8 +62,9 @@ namespace WhereWolves
             WereWolf4 = werewolf.LoadAsset<GameObject>("WereWolfBrown");
             Debug.Log("Loading Wolf5");
             WereWolf5 = werewolf.LoadAsset<GameObject>("WereWolfWhite");
+            
             werewolf?.Unload(false);
-
+            
         }
 
         [HarmonyPatch(typeof(ZNetScene), "Awake")]
