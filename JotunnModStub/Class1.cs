@@ -14,8 +14,6 @@ namespace MonsterLoader
         private static Dictionary<string, string> english = new Dictionary<string, string>() {
                                 {"earth_troll", "Evil Earth Troll"},
                                 {"crazy_troll", "Dark Goblin"},
-                                {"enemy_wizard","Evil Wizard" },
-                                {"enemy_nasty","Nasty Crawler" },
 };
 
         public static void init(string lang, Localization l)

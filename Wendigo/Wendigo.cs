@@ -28,10 +28,13 @@ namespace Wendigo
             {
                 return;
             }
+            
             zNetScene.m_prefabs.Add(Wendigo1);
             zNetScene.m_prefabs.Add(Wendigo2);
-
         }
+
+
+        
         private static AssetBundle GetAssetBundleFromResources(string filename)
         {
             var execAssembly = Assembly.GetExecutingAssembly();

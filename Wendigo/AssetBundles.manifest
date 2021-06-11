@@ -1,0 +1,99 @@
+ManifestFileVersion: 0
+CRC: 1225225735
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: valheim-brawler
+      Dependencies: {}
+    Info_1:
+      Name: masterchef
+      Dependencies: {}
+    Info_2:
+      Name: weaponassets
+      Dependencies: {}
+    Info_3:
+      Name: bow
+      Dependencies: {}
+    Info_4:
+      Name: swordcheatfixed
+      Dependencies: {}
+    Info_5:
+      Name: steel
+      Dependencies:
+        Dependency_0: magiccast
+    Info_6:
+      Name: valheim-stands
+      Dependencies: {}
+    Info_7:
+      Name: runeswords
+      Dependencies: {}
+    Info_8:
+      Name: betterwards
+      Dependencies: {}
+    Info_9:
+      Name: beehive_bomber
+      Dependencies: {}
+    Info_10:
+      Name: magiccast
+      Dependencies: {}
+    Info_11:
+      Name: monsterward
+      Dependencies: {}
+    Info_12:
+      Name: shovel
+      Dependencies: {}
+    Info_13:
+      Name: ashbringer
+      Dependencies: {}
+    Info_14:
+      Name: testfish
+      Dependencies: {}
+    Info_15:
+      Name: grill
+      Dependencies: {}
+    Info_16:
+      Name: chaosarmor
+      Dependencies: {}
+    Info_17:
+      Name: testarmor
+      Dependencies:
+        Dependency_0: chaosarmor
+    Info_18:
+      Name: elksfloor
+      Dependencies: {}
+    Info_19:
+      Name: wizard
+      Dependencies: {}
+    Info_20:
+      Name: daedricbow
+      Dependencies: {}
+    Info_21:
+      Name: yetiboy
+      Dependencies: {}
+    Info_22:
+      Name: golem
+      Dependencies: {}
+    Info_23:
+      Name: deer
+      Dependencies: {}
+    Info_24:
+      Name: nasty
+      Dependencies: {}
+    Info_25:
+      Name: werewolf
+      Dependencies: {}
+    Info_26:
+      Name: trailership
+      Dependencies: {}
+    Info_27:
+      Name: werebear
+      Dependencies: {}
+    Info_28:
+      Name: wendigo
+      Dependencies: {}
+    Info_29:
+      Name: thunderfury
+      Dependencies: {}
+    Info_30:
+      Name: frostmourne
+      Dependencies: {}
