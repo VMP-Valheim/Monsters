@@ -16,11 +16,21 @@ namespace MonsterLoader
                                 {"enemy_bear2","Grey WereBear" },
                                 {"enemy_bear3","Black WereBear" },
 };
+        private static Dictionary<string, string> italian = new Dictionary<string, string>() {
+                                {"enemy_bear1","Red WereBear" },
+                                {"enemy_bear2","Grey WereBear" },
+                                {"enemy_bear3","Black WereBear" },
+};
 
         public static void init(string lang, Localization l)
         {
             lcl = l;
-            if (lang == "English")
+            //string @str = PlayerPrefs.GetString("language", "");
+            if (lang == "Italian")
+            {
+                t = italian;
+            }
+            else
             {
                 t = english;
             }

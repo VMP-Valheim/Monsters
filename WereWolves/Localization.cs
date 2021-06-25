@@ -19,10 +19,23 @@ namespace MonsterLoader
                                 {"enemy_wolf5","Frost WereWolf" },
 };
 
+        private static Dictionary<string, string> italian = new Dictionary<string, string>() {
+                                {"enemy_wolf1","Armored WereWolf" },
+                                {"enemy_wolf2","Grey WereWolf" },
+                                {"enemy_wolf3","Black WereWolf" },
+                                {"enemy_wolf4","Brown WereWolf" },
+                                {"enemy_wolf5","Frost WereWolf" },
+};
+
         public static void init(string lang, Localization l)
         {
             lcl = l;
-            if (lang == "English")
+            //string @str = PlayerPrefs.GetString("language", "");
+            if (lang == "Italian")
+            {
+                t = italian;
+            }
+            else
             {
                 t = english;
             }

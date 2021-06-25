@@ -14,12 +14,20 @@ namespace MonsterLoader
         private static Dictionary<string, string> english = new Dictionary<string, string>() {
                                 {"enemy_wendigo1","Forest Wendigo" },
                                 {"enemy_wendigo2","Swamp Wendigo" },
+};private static Dictionary<string, string> italian = new Dictionary<string, string>() {
+                                {"enemy_wendigo1","Forest Wendigo" },
+                                {"enemy_wendigo2","Swamp Wendigo" },
 };
 
         public static void init(string lang, Localization l)
         {
             lcl = l;
-            if (lang == "English")
+            //string @str = PlayerPrefs.GetString("language", "");
+            if (lang == "Italian")
+            {
+                t = italian;
+            }
+            else
             {
                 t = english;
             }
