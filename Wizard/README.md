@@ -153,6 +153,6 @@ is strongly encouraged.
 <br/><br/>
 
 #### Proof of concept
-This is a screen shot of the Wizard spawned in game with the two custom MonoBehaviours attached.
+This is a screen shot of the **Wizard** spawned in game with the two custom `MonoBehaviours` attached.
 <br/><br>
 <img src="example.png" alt="example" />
