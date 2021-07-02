@@ -4,7 +4,7 @@ By: Digitalroot
 #### MonoBehaviourRepository.csproj
 
 This is a simple project where each custom `MonoBehaviour` is defined as a class (.cs). 
-These classes are defined in the root namepace. Which means there is no `namespace` 
+These classes are defined in the `global` namepace, which means there is no `namespace` 
 keyword used. I think this is how **Unity** does it.
 
 ###### Example
@@ -26,7 +26,7 @@ public class MyCustomMonoBehaviour : MonoBehaviour
 
 **Note:** There is a ref to **MonoBehaviourRepository.dll** in the **Wizard.csproj** file. 
 I did this out of convence for testing. It is not required. Wizard.csproj does not have 
-a hard dependency on MonoBehaviourRepository.dll
+a hard dependency on **MonoBehaviourRepository.dll**
 
 ``` xml
     <Content Include="..\MonoBehaviourRepository\bin\Debug\MonoBehaviourRepository.dll">
@@ -38,7 +38,7 @@ a hard dependency on MonoBehaviourRepository.dll
 
 ##### MonoBehaviourRepositoryLoader.cs
 
-This class adds **Extension** methods to the `GameObject` class and handled loading of **MonoBehaviourRepository.dll** 
+This class adds **Extension** methods to the `GameObject` class and handles loading of **MonoBehaviourRepository.dll** 
 
 ###### Code
 ``` C#
@@ -154,4 +154,5 @@ is strongly encouraged.
 
 #### Proof of concept
 This is a screen shot of the Wizard spawned in game with the two custom MonoBehaviours attached.
+<br/><br>
 <img src="example.png" alt="example" />
