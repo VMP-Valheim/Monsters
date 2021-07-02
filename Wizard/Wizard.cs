@@ -3,6 +3,7 @@ using HarmonyLib;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using Wizard;
 
 namespace EvilWizard
 {
@@ -46,9 +47,9 @@ namespace EvilWizard
             wizard = GetAssetBundleFromResources("wizard");
             Debug.Log("Loading Wizard");
             Wizard = wizard.LoadAsset<GameObject>("Wizard");
-            Wizard.AddComponent<MyCustomMonoBehaviour>();
+            Wizard.AddMonoBehaviour(CustomMonoBehavioursNames.MyCustomMonoBehaviour);
+            Wizard.GetOrAddMonoBehaviour(CustomMonoBehavioursNames.UnRemoveableCustomMonoBehaviour);
             wizard?.Unload(false);
-
         }
 
         [HarmonyPatch(typeof(ZNetScene), "Awake")]
@@ -70,12 +71,9 @@ namespace EvilWizard
         }
     }
 
-
-    public class MyCustomMonoBehaviour : MonoBehaviour
+    public static class CustomMonoBehavioursNames
     {
-      public void Update()
-      {
-        gameObject.transform.Rotate(0, 5f, 0);
-      }
+      public static string MyCustomMonoBehaviour = nameof(MyCustomMonoBehaviour);
+      public static string UnRemoveableCustomMonoBehaviour = nameof(UnRemoveableCustomMonoBehaviour);
     }
 }

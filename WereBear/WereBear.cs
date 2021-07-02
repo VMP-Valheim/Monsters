@@ -42,5 +42,6 @@ namespace WereBear
     {
       _harmony?.UnpatchSelf();
     }
+
   }
 }
