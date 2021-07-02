@@ -1,14 +1,14 @@
 ﻿using BepInEx;
 using HarmonyLib;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using Wizard;
 
 namespace EvilWizard
 {
 
-    [BepInPlugin(PluginId, "Wizard", "0.0.7")]
+  [BepInPlugin(PluginId, "Wizard", "0.0.8")]
     public class EvilWizard : BaseUnityPlugin
     {
         public const string PluginId = "Wizard";
@@ -47,8 +47,9 @@ namespace EvilWizard
             wizard = GetAssetBundleFromResources("wizard");
             Debug.Log("Loading Wizard");
             Wizard = wizard.LoadAsset<GameObject>("Wizard");
+            Wizard.AddMonoBehaviour(CustomMonoBehavioursNames.MyCustomMonoBehaviour);
+            Wizard.GetOrAddMonoBehaviour(CustomMonoBehavioursNames.UnRemoveableCustomMonoBehaviour);
             wizard?.Unload(false);
-
         }
 
         [HarmonyPatch(typeof(ZNetScene), "Awake")]
@@ -68,5 +69,11 @@ namespace EvilWizard
         {
             _harmony?.UnpatchSelf();
         }
+    }
+
+    public static class CustomMonoBehavioursNames
+    {
+      public static string MyCustomMonoBehaviour = nameof(MyCustomMonoBehaviour);
+      public static string UnRemoveableCustomMonoBehaviour = nameof(UnRemoveableCustomMonoBehaviour);
     }
 }
