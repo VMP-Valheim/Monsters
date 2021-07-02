@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Golem", "Golem\Golem.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reaper", "Reaper\Reaper.csproj", "{5F53135D-FB41-47AE-980A-53A587EABE7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoBehaviourRepository", "MonoBehaviourRepository\MonoBehaviourRepository.csproj", "{2CE90835-7B35-431C-9267-5C42DB402377}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,7 +30,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DEAF4438-8089-40ED-8175-398E1261D45B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DEAF4438-8089-40ED-8175-398E1261D45B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEAF4438-8089-40ED-8175-398E1261D45B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEAF4438-8089-40ED-8175-398E1261D45B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CA45AC0-C588-421D-9D20-E67F6B6524BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -63,6 +64,10 @@ Global
 		{5F53135D-FB41-47AE-980A-53A587EABE7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F53135D-FB41-47AE-980A-53A587EABE7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F53135D-FB41-47AE-980A-53A587EABE7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CE90835-7B35-431C-9267-5C42DB402377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CE90835-7B35-431C-9267-5C42DB402377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CE90835-7B35-431C-9267-5C42DB402377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CE90835-7B35-431C-9267-5C42DB402377}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
